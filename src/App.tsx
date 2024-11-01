@@ -1,9 +1,16 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Login, Home } from '@/page';
+import { ProtectedRoutes } from './utils';
+
 export const App = () => {
   return (
-    <div className="h-full w-full bg-black text-violet-700">
-      <p className="h-11 w-full text-3xl text-blue-900">
-        Configuracion Tailwind, Eslint y Prettier completa
-      </p>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Login />} path="/login" />
+        <Route element={<ProtectedRoutes />}>
+          <Route element={<Home />} path="/" />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
